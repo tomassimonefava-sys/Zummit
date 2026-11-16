@@ -9,6 +9,11 @@
 </head>
 <body>
 
+    <div id="pantalla-carga">
+        <img src="images/pestañas/logo.png" alt="Cargando ZUMMIT" class="logo-girando">
+        <p class="texto-cargando">CARGANDO...</p>
+    </div>
+
     <header>
         <div class="logo-container" onclick="renderConsoles()" style="cursor: pointer;">
             <div>
@@ -282,6 +287,7 @@
             id('time-section').style.display = 'none';
             id('date-section').style.display = 'none';
             id('contact-section').style.display = 'none';
+            id('about-section').style.display = 'none';
             id('all-games-section').style.display = 'block';
 
             const gridContainer = id('games-grid-container');
@@ -599,6 +605,35 @@
             id('contact-section').style.display = 'none';
             id('about-section').style.display = 'block';
         }
+
+        window.addEventListener('load', function() {
+            const pantallaCarga = obtenerElemento('pantalla-carga');
+            if (pantallaCarga) {
+                pantallaCarga.classList.add('oculto');
+            }
+        });
+
+        function ocultarPantallaCarga() {
+            const pantallaCarga = document.getElementById('pantalla-carga');
+            if (pantallaCarga) {
+                // Espera 1500 milisegundos (1.5 segundos) antes de empezar a desvanecerse
+                setTimeout(() => {
+                    pantallaCarga.classList.add('oculto');
+                }, 1500);
+            }
+            }
+
+        if (document.readyState === 'complete') {
+            ocultarPantallaCarga();
+        } else {
+            window.addEventListener('load', ocultarPantallaCarga);
+        }
+
+        // Seguro anti-trabado a los 3.5 segundos
+        setTimeout(() => {
+            const pantallaCarga = document.getElementById('pantalla-carga');
+            if (pantallaCarga) pantallaCarga.classList.add('oculto');
+        }, 3500);
 
         renderConsoles();
     </script>

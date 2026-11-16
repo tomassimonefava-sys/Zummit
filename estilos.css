@@ -42,6 +42,54 @@ body::before {
     pointer-events: none;
 }
 
+#pantalla-carga {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #080808;
+    z-index: 9999; /* Se asegura de tapar absolutamente todo, incluido el header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.logo-girando {
+    width: 140px;  /* Antes estaba en 90px */
+    height: 140px; /* Antes estaba en 90px */
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px var(--brillo-neon));
+    animation: girarLogo 1.5s linear infinite;
+}
+
+.texto-cargando {
+    color: var(--rojo-neon);
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-size: 1.3rem; /* Antes estaba en 0.9rem */
+    text-shadow: 0 0 10px var(--brillo-neon);
+}
+
+/* Clase que agrega JavaScript cuando termina de cargar */
+#pantalla-carga.oculto {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes girarLogo {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 header {
     padding: 20px;
     text-align: center;

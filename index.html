@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ZUMMIT | Reserva de Consolas</title> 
     <link rel="stylesheet" href="estilos.css">
+    <link rel="icon" type="image/ico" href="images/icono/ico8.ico">
 </head>
 <body>
 
@@ -18,13 +19,13 @@
 
         <nav class="pestanas-header">
             <button class="pestana-header" onclick="renderAllGamesGrid()">
-                <img src="images/pestañas/joystick.png" alt="Logo 1">
+                <img src="images/pestañas/joystick.png" alt="Joystick">
             </button>
-            <button class="pestana-header">
-                <img src="images/pestañas/persona.png" alt="Logo 2">
+            <button class="pestana-header" onclick="renderContact()">
+                <img src="images/pestañas/persona.png" alt="Contacto">
             </button>
-            <button class="pestana-header">
-                <img src="images/pestañas/logo.png" alt="Logo 3">
+            <button class="pestana-header" onclick="renderAbout()">
+                <img src="images/pestañas/logo.png" alt="Sobre Nosotros">
             </button>
         </nav>
 
@@ -51,6 +52,48 @@
         <div class="games-grid-container" id="games-grid-container" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;">
             <!-- Se llena dinámicamente -->
         </div>
+    </div>
+
+    <div id="contact-section" style="display: none; max-width: 500px; margin: 20px auto; padding: 30px 20px; text-align: center; background: var(--card-bg); border: 1px solid var(--neon-red); border-radius: 12px; box-shadow: 0 0 20px var(--neon-glow);">
+        <h2 style="color: #fff; letter-spacing: 2px; margin-bottom: 10px;">CONTACTANOS</h2>
+        <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 25px;">Escaneá el código QR o tocá el botón para escribirnos directo por WhatsApp.</p>
+        
+        <!-- Contenedor del QR con fondo blanco para que se lea fácil -->
+        <div style="background: #fff; padding: 15px; border-radius: 10px; display: inline-block; margin-bottom: 25px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);">
+            <img src="images/qr/qr-whats.png" alt="QR WhatsApp" style="width: 200px; height: 200px; display: block;">
+        </div>
+
+        <br>
+
+        <!-- Botón directo a WhatsApp -->
+        <a href="https://wa.me/5491133673707?text=Hola%20ZUMMIT!%20Quiero%20hacer%20una%20consulta." target="_blank" style="display: inline-block; background: #25D366; color: #000; font-weight: bold; text-decoration: none; padding: 14px 28px; border-radius: 6px; letter-spacing: 1px; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); transition: transform 0.2s;">
+            ABRIR WHATSAPP
+        </a>
+    </div>
+
+    <div id="about-section" style="display: none; max-width: 700px; margin: 20px auto; padding: 45px 50px; text-align: center; background: var(--card-bg); border: 1px solid var(--neon-red); border-radius: 12px; box-shadow: 0 0 20px var(--neon-glow);">
+        <h2 style="color: rgb(255, 255, 255); letter-spacing: 2px; margin-bottom: 25px; font-size: 2.2rem;">SOBRE NOSOTROS</h2>
+        
+        <p style="color: #eee; font-size: 1rem; line-height: 1.7; margin-bottom: 18px;">
+            <strong style="color: rgb(230, 39, 39);">ZUMMIT</strong> es un proyecto desarrollado por los estudiantes <strong style="color: rgb(230, 39, 39);">Tomás Agustín Simone Fava</strong> y <strong style="color: rgb(230, 39, 39);">Tobías Santino Sierra</strong>, de 4to 5ta (Turno Mañana) de la E.T. N°35 "Ing. Eduardo Latzina", en el marco de la materia Proyecto Informático I. Esta iniciativa nace para crear el espacio definitivo para los amantes del gaming. Nuestro objetivo es brindar acceso rápido, cómodo y sin vueltas a las mejores consolas, PCs de alto rendimiento y títulos clásicos de arcade en un ambiente pensado para disfrutar al máximo.
+        </p>
+
+        <p style="color: #eee; font-size: 1rem; line-height: 1.7; margin-bottom: 18px;">
+            La página consiste en el desarrollo de una plataforma web orientada a satisfacer las necesidades de entretenimiento de los usuarios, brindándoles la oportunidad de darse un gusto y disfrutar del mundo de los videojuegos sin la necesidad de adquirir una consola o un juego costoso.
+            A través de Zummit, los clientes podrán acceder a un servicio de reserva flexible donde tendrán la libertad de elegir la consola de su preferencia, explorar un catálogo de todos juegos recientes y más jugados, permitiéndoles reencontrarse con su juego favorito o que tenga la oportunidad de probar alguno que nunca jugó, y seleccionar el tiempo exacto de uso que deseen. La propuesta busca eliminar las barreras de acceso al gaming ofreciendo una experiencia accesible, personalizada y enfocada en la diversión inmediata.
+        </p>
+
+        <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">
+            Elegís tu plataforma, seleccionás tu juego favorito, definís cuánto tiempo querés jugar y reservás tu lugar en segundos. Vos solo preocupate por jugar; del resto nos encargamos nosotros.
+        </p>
+
+        <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; margin-right: 537px;">
+            Zummit.
+        </p>
+
+        <button class="boton-agregar-carrito" onclick="renderConsoles()">EXPLORAR CONSOLAS</button>
+    </div>
+
     </div>
 
     <!-- 1. SECCIÓN CARRUSEL DE CONSOLAS Y JUEGOS -->
@@ -223,6 +266,8 @@
             id('time-section').style.display = 'none';
             id('date-section').style.display = 'none';
             id('all-games-section').style.display = 'none';
+            id('contact-section').style.display = 'none';
+            id('about-section').style.display = 'none';
             id('carousel-section').style.display = 'flex';
             
             currentItems = data;
@@ -236,6 +281,7 @@
             id('carousel-section').style.display = 'none';
             id('time-section').style.display = 'none';
             id('date-section').style.display = 'none';
+            id('contact-section').style.display = 'none';
             id('all-games-section').style.display = 'block';
 
             const gridContainer = id('games-grid-container');
@@ -268,6 +314,8 @@
             id('time-section').style.display = 'none';
             id('date-section').style.display = 'none';
             id('all-games-section').style.display = 'none';
+            id('contact-section').style.display = 'none';
+            id('about-section').style.display = 'none';
             id('carousel-section').style.display = 'flex';
 
             currentItems = consoleObj.games;
@@ -343,6 +391,8 @@
             id('carousel-section').style.display = 'none';
             id('date-section').style.display = 'none';
             id('all-games-section').style.display = 'none';
+            id('about-section').style.display = 'none';
+            id('contact-section').style.display = 'none';
             id('time-section').style.display = 'block';
             id('selected-game-title').innerText = `${selectedConsole.name} - ${selectedGame.name}`;
 
@@ -525,6 +575,31 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        function renderContact() {
+            currentStep = 1;
+            updateStepIndicators();
+            id('back-btn').style.display = 'block';
+            id('carousel-section').style.display = 'none';
+            id('time-section').style.display = 'none';
+            id('date-section').style.display = 'none';
+            id('all-games-section').style.display = 'none'
+            id('about-section').style.display = 'none';;
+            id('contact-section').style.display = 'block';
+        }
+
+        function renderAbout() {
+            currentStep = 1;
+            updateStepIndicators();
+            id('back-btn').style.display = 'block';
+            id('carousel-section').style.display = 'none';
+            id('time-section').style.display = 'none';
+            id('date-section').style.display = 'none';
+            id('all-games-section').style.display = 'none';
+            id('contact-section').style.display = 'none';
+            id('about-section').style.display = 'block';
+        }
+
         renderConsoles();
     </script>
 </body>
